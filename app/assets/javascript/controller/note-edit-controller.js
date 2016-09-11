@@ -3,11 +3,11 @@
         .module('NoteWrangler')
         .controller('NoteEditController', NoteEditController);
 
-    var vm = this;
-
-    function NoteEditController($scope, Note, $routeParams, $location) {
+    function NoteEditController($scope, Category, User, Note, $routeParams, $location) {
         $scope.note = Note.get({id: $routeParams.id});
         $scope.isSubmitting = false;
+        $scope.categories = Category.query();
+        $scope.users = User.query();
 
         $scope.saveNote = function (note) {
             $scope.isSubmitting = true;
